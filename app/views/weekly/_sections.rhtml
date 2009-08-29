@@ -1,0 +1,13 @@
+<h4> 
+<%cmap = {}; completed.each { |c| cmap[c.section_id] = c }%>
+<%=" #{clubber.first} #{clubber.last}"%>
+</h4>
+<%locals = { :books => books, :book_id => clubber.book_id }%>
+<%=render(:partial => "bookchooser", :locals => locals)%>
+<p>
+<%sections.each do |section|
+    locals = {:complete => cmap[section.id], :section => section}%>
+    <div id="s<%=section.id%>">
+    <%=render(:partial => "section", :locals => locals)%>
+    </div>
+<%end%>

@@ -1,0 +1,32 @@
+<h1>Editing book</h1>
+
+<%= error_messages_for :book %>
+
+<% form_for(@book) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Club</b><br />
+    <%= f.text_field :club %>
+  </p>
+
+  <p>
+    <b>Display order</b><br />
+    <%= f.text_field :display_order %>
+  </p>
+
+  <p>
+    <b>Active</b><br />
+    <%= f.text_field :active %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @book %> |
+<%= link_to 'Back', books_path %>

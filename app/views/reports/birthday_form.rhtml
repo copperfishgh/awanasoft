@@ -1,0 +1,14 @@
+<h3>Birthday Report</h3>
+<div id="change_view" >
+    <% form_tag(:action => 'birthday_report') do %>
+    <table>
+        <tr>
+            <td valign='top'><%= render :partial => 'shared/select_class' %></td>
+        </tr>
+    </table>
+    <%= submit_tag "Create report" %>
+    <% end %>
+</div>
+
+
+

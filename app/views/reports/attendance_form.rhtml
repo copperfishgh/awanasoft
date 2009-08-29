@@ -1,0 +1,20 @@
+<h3>Attendance Report</h3>
+The Attendance Report shows how often a clubber was present or absent during a specified period of time.
+<P/>
+<div id="change_view" >
+    <% form_tag(:action => 'attendance_report')  do %>
+    <table>
+        <tr>
+            <% locals = { :title => 'Beginning with Meeting', :var_name => 'low_meeting_id' } %>
+            <td valign='top'><%= render :partial => 'shared/select_meeting', :locals => locals %></td>
+            <td width='30'></td>
+            <% locals = { :title => 'Ending with Meeting', :var_name => 'high_meeting_id' } %>
+            <td valign='top'><%= render :partial => 'shared/select_meeting', :locals => locals %></td>
+            <td width='30'></td>
+            <td valign='top'><%= render :partial => 'shared/select_class' %></td>
+        </tr>
+    </table>
+    <%= submit_tag "Create report" %>
+    <% end %>
+</div>
+

@@ -1,0 +1,9 @@
+<h3>Update Clubber Information</h3>
+
+<% form_tag(:action => 'update', :id => @clubber) do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Update Clubber' %>
+<% end %>
+
+<%= link_to 'Show', :action => 'show', :id => @clubber %> |
+<%= link_to 'Back', :action => 'back' %>

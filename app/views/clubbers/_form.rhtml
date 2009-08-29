@@ -1,0 +1,76 @@
+<%= error_messages_for 'clubber' %>
+
+<!--[form:clubber]-->
+<table>
+    <tr>
+        <td valign='top'>
+            <table>
+                <tr>
+                    <td><label for="clubber_first">First Name</label><br/>
+                    <%= text_field 'clubber', 'first', :size => 15 %></td>
+            
+                    <td><label for="clubber_last">Last Name</label><br/>
+                    <%= text_field 'clubber', 'last', :size => 20  %></td>
+                    
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td><label for="clubber_gender">Gender (M/F)</label><br/>
+                    <%= text_field 'clubber', 'gender', :size => 1%></td>
+                    
+                    <td><label for="clubber_birthday">Birthday</label><br/>
+                        <%= date_select 'clubber', 'birthday', 
+                        :start_year => 1940,
+                        :end_year => Time.now.year - 1, 
+                        :use_month_numbers => true,
+                        :order => [:month, :day, :year] %></td>
+                </tr>
+            </table>
+            
+            <table>
+                <tr>
+                    <td><label for="clubber_grade_id">Class</label><br/>
+                    <%= select 'clubber', 'grade_id', Grade.find(:all).collect {|p| [ p.name, p.id ] }, :selected_value => @clubber.grade_id, :include_blank => true %></td>
+                    
+                    <td><label for="clubber_active">Active</label><br/>
+                    <select id="clubber_active" name="clubber[active]">
+                        <option value="true" <%= "selected='selected'" if @clubber.active? %> >True</option>
+                        <option value="false" <%= "selected='selected'" unless @clubber.active? %> >False</option>
+                    </select></td>
+
+                </tr>
+            </table>
+                    
+            <table>
+                <tr>
+                    <td><label for="clubber_address">Address</label><br/>
+                    <%= text_field 'clubber', 'address', :size => 35   %></td>
+                    
+
+                </tr>
+            </table>
+             
+            <table>
+                <tr>
+                    <td><label for="clubber_city">City</label><br/>
+                    <%= text_field 'clubber', 'city', :size => 15  %></td>
+
+                    <td><label for="clubber_state">State</label><br/>
+                    <%= text_field 'clubber', 'state', :size => 2  %></td>
+                    <td><label for="clubber_zip">Zip</label><br/>
+                    <%= text_field 'clubber', 'zip', :size => 10 %></td>
+                </tr>
+            </table>
+        </td>
+        
+        <td>
+            <p><label for="clubber_notes">Notes</label><br/>
+            <%= text_area 'clubber', 'notes', :cols => 50, :rows => 10  %></p>
+        </td>
+    </tr>
+</table>
+
+<!--[eoform:clubber]-->
+

@@ -1,0 +1,17 @@
+<html>
+<head>
+<%= javascript_include_tag :defaults %>
+<title>Wall Highway Awanas Admin</title>
+</head>
+<body>
+<%= link_to("Edit Classes", :controller => 'grades') %>
+&nbsp;&nbsp;
+<%= link_to("Edit Books", :controller => 'books') %>
+&nbsp;&nbsp;
+<%= link_to("Edit Meetings", :controller => 'meetings') %>
+&nbsp;&nbsp;
+<%= link_to("Weekly", :controller => 'weekly') %>
+&nbsp;&nbsp;
+<%= @content_for_layout %>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<h1>Listing grades</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Club</th>
+    <th>Notes</th>
+    <th>Display order</th>
+  </tr>
+
+<% for grade in @grades %>
+  <tr>
+    <td><%=h grade.name %></td>
+    <td><%=h grade.club %></td>
+    <td><%=h grade.notes %></td>
+    <td><%=h grade.display_order %></td>
+    <td><%= link_to 'Show', grade %></td>
+    <td><%= link_to 'Edit', edit_grade_path(grade) %></td>
+    <td><%= link_to 'Destroy', grade, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New grade', new_grade_path %>

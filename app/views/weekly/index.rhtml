@@ -1,0 +1,45 @@
+<h3>Weekly Updates for <%= @selected_meeting.nice %></h3>
+<%= link_to_function('Change View', "Toggle.display('change_view')") %>
+<div id="change_view" style="display: none;">
+    <% form_tag(:action => 'change_view') do %>
+    <table>
+        <tr>
+            <td valign='top'><%= render :partial => 'shared/select_meeting' %></td>
+            <td width='30'></td>
+            <td valign='top'><%= render :partial => 'shared/select_class' %></td>
+        </tr>
+    </table>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <%= link_to_function('Cancel', "Toggle.display('change_view')") %>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <%= submit_tag "Change view settings" %>
+    <% end %>
+</div>
+<table>
+    <tr>
+        <td valign='top'>
+            <table>
+                <%@clubbers.each do |clubber|
+                    locals = {:clubber => clubber } %>
+                    <tr>
+                        <td id='c<%= clubber.id %>'>
+                            <%= render(:partial => 'clubber', :locals => locals) %>
+                        </td>
+                    </tr>
+                <%end%>
+            </table>
+        </td>
+        <td valign='top' id='fastform' >
+        </td>
+    </tr>
+</table>

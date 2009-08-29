@@ -1,0 +1,15 @@
+<table>
+    <tr>
+	<%books.each do |book|
+        image_options = {:alt => book.name }
+        if book.id == book_id%>
+            <td id="activebook">
+        <%else%>
+            <td>
+        <%end%>
+		<%image = image_tag(book.name.gsub(' ','').downcase + '.png', image_options) %>
+		<%=link_to_remote(image, :update => 'fastform', :url => { :action => 'change_book', :id => book.id }) %>
+	    </td>
+	<%end%>
+    </tr>
+</table>

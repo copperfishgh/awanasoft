@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <%@title.each do |s|%>
+            <td><strong><%=s.capitalize%></strong></td>
+        <%end%>
+    </tr>
+    <%@records.each do |record|%>
+    <tr valign="top">
+        <%@title.each do |s|%>
+            <td><%=record.attributes[s]%></td>
+        <%end%>
+    </tr>
+    <%end%>
+<table>

@@ -1,0 +1,3 @@
+Fix mysql driver.
+Backup VMWare machine.
+Fix backup scripts and rsync.

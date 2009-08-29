@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @grade.name %>
+</p>
+
+<p>
+  <b>Club:</b>
+  <%=h @grade.club %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @grade.notes %>
+</p>
+
+<p>
+  <b>Display order:</b>
+  <%=h @grade.display_order %>
+</p>
+
+
+<%= link_to 'Edit', edit_grade_path(@grade) %> |
+<%= link_to 'Back', grades_path %>

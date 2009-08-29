@@ -1,0 +1,19 @@
+<%
+=begin
+
+This partial will render a section entry.  Incoming locals are as follow:
+
+    section - a Section instance
+    complete - the complete record, if it exists
+=end
+%>
+<%  image_file = complete ? 'done.gif' : 'ndone.gif'                        %>
+<%= link_to_remote(image_tag(image_file),
+       :update => "s#{section.id}",
+       :url => { :action => 'mark_section', :id => section.id }) %>
+<span class="<%=section.optional? ? 'opt' : 'req'%>"><%= section.name %></span>
+<%if complete
+    t = complete.meeting.whenitbe%>
+    - completed <em><%="#{t.mon}/#{t.day}/#{t.year}"%></em>
+<%end%>
+<br>

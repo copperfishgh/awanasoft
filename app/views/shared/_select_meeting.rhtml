@@ -1,0 +1,33 @@
+<%  
+    indexes = @all_meetings.collect {|m| m.whenitbe.mon }.uniq
+    months = {}; indexes.each { |i| months[i] = [] }    
+    @all_meetings.each do |meeting|
+        month, day = meeting.whenitbe.mon, meeting.whenitbe.day
+        months[month] << {:day=> day, :id => meeting.id}
+    end
+
+    # find which meeting we should check
+    monthnames = %w{Skip Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec}
+
+    # the next two lines defines the locals if they aren't already defined.
+    begin; title; rescue; title = nil; end
+    begin; var_name; rescue; var_name = nil; end
+
+    # assign locals to default values if they are uninitialized.
+    title or title = 'Choose Meeting Date:'
+    var_name or var_name = 'meeting_id'
+
+%>
+<table>
+    <strong><%= title %></strong><br/>
+    <%indexes.each do |i|
+        next if months[i].size == 0 %>
+        <tr align='center'>
+            <td><strong><%=monthnames[i]%></strong></td>
+            <%months[i].each do |m|
+            checked = m[:id] == @selected_meeting.id ? 'checked' : ''%>
+            <td><input type="radio" value="<%=m[:id]%>" name="<%= var_name %>" <%=checked%>><%=m[:day]%></td>
+            <%end%>
+        </tr>
+    <%end%>
+</table>

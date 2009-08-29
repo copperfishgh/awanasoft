@@ -1,0 +1,26 @@
+<h1>Listing books</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Club</th>
+    <th>Display order</th>
+    <th>Active</th>
+  </tr>
+
+<% for book in @books %>
+  <tr>
+    <td><%=h book.name %></td>
+    <td><%=h book.club %></td>
+    <td><%=h book.display_order %></td>
+    <td><%=h book.active %></td>
+    <td><%= link_to 'Show', book %></td>
+    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+    <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New book', new_book_path %>

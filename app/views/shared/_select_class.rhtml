@@ -1,0 +1,5 @@
+<strong>Choose classes to show:</strong><br>
+<%@all_grades.each do |grade|
+    checked = @selected_grades.include?(grade.id) ? 'checked' : ''%>
+    <input type="checkbox" name="grade_id_<%=grade.id%>" <%=checked%>><%=grade.name%><br/>
+<%end%>

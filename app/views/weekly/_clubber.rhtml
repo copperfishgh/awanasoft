@@ -1,0 +1,28 @@
+<%
+=begin
+
+This partial will render a clubber entry.  Incoming locals are as follow:
+
+    clubber - an instance of Clubber, left joined with a visit record
+=end
+%>
+<table><tr><td>
+    <%name = "#{clubber.last}, #{clubber.first}"
+    present = !clubber.meeting_id.nil?
+    image_file =  present ? 'here.gif' : 'nhere.gif'%>
+    <%=link_to_remote(image_tag(image_file),
+    :update => "c#{clubber.id}",
+    :url => { :action => :mark_clubber, :id => clubber.id })%>
+    <%=name%>
+    <% if present 
+        tag = clubber.prepared ? '(Prepared? Yes)' : '(Prepared?  No)' %>
+        <%=link_to_remote(tag,
+        :update => "c#{clubber.id}",
+        :url => { :action => :clubber_prepared, :id => clubber.id })%>
+    <% end %>
+    </td><td>
+    <%=link_to('edit', :controller => 'clubbers', :action => 'edit', :id => clubber.id)%>
+    <%=link_to_remote('sections', :update => "fastform",
+        :url => { :action => :sections, :id => clubber.id }, 
+        :complete => 'scroll(0,0)')%>
+</td></tr></table>

@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @book.name %>
+</p>
+
+<p>
+  <b>Club:</b>
+  <%=h @book.club %>
+</p>
+
+<p>
+  <b>Display order:</b>
+  <%=h @book.display_order %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @book.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
