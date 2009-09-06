@@ -1,15 +1,23 @@
-<table>
-    <tr>
-	<%books.each do |book|
-        image_options = {:alt => book.name }
-        if book.id == book_id%>
-            <td id="activebook">
-        <%else%>
-            <td>
-        <%end%>
-		<%image = image_tag(book.name.gsub(' ','').downcase + '.png', image_options) %>
-		<%=link_to_remote(image, :update => 'fastform', :url => { :action => 'change_book', :id => book.id }) %>
-	    </td>
+<table><tr>
+<%
+lastclub = books[0].club
+books.each do |book|
+	if book.club != lastclub
+		lastclub = book.club
+%>
+		</tr><tr>
+<%
+	end
+	image_options = {:alt => book.name }
+	if book.id == book_id%>
+	    <td id="activebook">
+	<%else%>
+	    <td>
 	<%end%>
-    </tr>
-</table>
+	<%image = image_tag(book.name.gsub(' ','').downcase + '.png', image_options) %>
+	<%=link_to_remote(image, :update => 'fastform', :url => { :action => 'change_book', :id => book.id }) %>
+	</td>
+<%
+end
+%>
+</tr></table>
