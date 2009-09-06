@@ -27,7 +27,6 @@ class WeeklyController < ApplicationController
     sql = "SELECT c.*, v.meeting_id, v.prepared, v.id as visit_id FROM clubbers c INNER JOIN visits v ON v.clubber_id = c.id AND v.meeting_id = #{session[:meeting_id]}
             WHERE c.id = #{clubber_id}"
     clubber = Clubber.find_by_sql(sql).first
-    require 'yaml'
     # now toggle and update state
     render(:partial => 'clubber', :locals => { :clubber => clubber })
   end
@@ -57,7 +56,7 @@ class WeeklyController < ApplicationController
     clubber.save
     locals = { 
       :clubber => clubber,
-      :books => clubber.club == 'workers' ? Book.find(:all, :conditions=>'active=1') : Book.find_all_by_club(clubber.club, :order => 'display_order', :conditions=>'active=1'),
+      :books => clubber.club == 'workers' ? Book.find(:all, :conditions=>'active=1', :order => 'display_order') : Book.find_all_by_club(clubber.club, :order => 'display_order', :conditions=>'active=1'),
       :meeting_id => session[:meeting_id],
       :completed => Complete.find_all_by_clubber_id(clubber_id),
       :sections => Section.find_all_by_book_id(clubber.book_id, :order => "optional, display_order")
@@ -75,7 +74,7 @@ class WeeklyController < ApplicationController
     end
     locals = { 
       :clubber => clubber,
-      :books => clubber.club == 'workers' ? Book.find(:all, :conditions=>'active=1') : Book.find_all_by_club(clubber.club, :order => 'display_order', :conditions=>'active=1'),
+      :books => clubber.club == 'workers' ? Book.find(:all, :conditions=>'active=1', :order => 'display_order') : Book.find_all_by_club(clubber.club, :order => 'display_order', :conditions=>'active=1'),
       :meeting_id => session[:meeting_id],
       :completed => Complete.find_all_by_clubber_id(clubber_id),
       :sections => Section.find_all_by_book_id(clubber.book_id, :order => "optional, display_order")
