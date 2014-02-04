@@ -8,7 +8,7 @@ class Clubber < ActiveRecord::Base
   validates_presence_of :first, :last, :gender, :grade_id
   validates_format_of :gender,
     :with => /^[MF]$/,
-    :message => "must either M or F" 
+    :message => "must be either M or F" 
   
   def grade
     Grade.find(attributes['grade_id'])
